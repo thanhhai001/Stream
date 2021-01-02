@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebRTC</title>
+</head>
+<body>
+    <h1>Wellcom WebRTC</h1>
+    <video id="localSteam" style="width: 300px;" controls></video>
+</body>
+<script>
+    navigator.mediaDevices.getUserMedia({audio: false, video: true})
+    .then(stream => {
+        const video = document.getElementById('localSteam');
+        video.srcObject = stream;
+        video.onloadedmetadata = function () {
+            video.play();
+        }
+    })
+    .catch(err => console.log(err))
+</script>
+</html>
